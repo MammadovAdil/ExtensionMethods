@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Ma.ExtensionMethods</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Mammadov Adil</authors>
+    <owners>Mammadov Adil</owners>
+    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>General utility extension methods.</description>
+    <releaseNotes>First release of extension methods.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Utilities Extensions Reflection</tags>
+  </metadata>
+</package>
