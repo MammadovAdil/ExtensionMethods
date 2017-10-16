@@ -9,6 +9,9 @@ using System.Text;
 
 namespace Ma.ExtensionMethods.Reflection
 {
+    /// <summary>
+    /// Extension methods which works with reflection.
+    /// </summary>
     public static class ReflectionExtensions
     {
         /// <summary>
@@ -615,6 +618,50 @@ namespace Ma.ExtensionMethods.Reflection
         }
 
         /// <summary>
+        /// Chain all expressions in the list by Or expression.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">
+        /// When expressions is null.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// When there is no expression in expressions.
+        /// </exception>
+        /// <typeparam name="T">Type of model.</typeparam>
+        /// <param name="expressions">List of expressions to chain.</param>
+        /// <returns>Constructed expression.</returns>
+        public static Expression<Func<T, bool>> ConstructOrChain<T>(
+            this IEnumerable<Expression<Func<T, bool>>> expressions)
+        {
+            if (expressions == null)
+                throw new ArgumentNullException("expressions");
+            if (expressions.Count() == 0)
+                throw new ArgumentOutOfRangeException(
+                    "expressions",
+                    "There must be at least one expression in expressions");
+
+            ParameterExpression parameterExp = Expression.Parameter(typeof(T), "m");
+
+            Expression orChainedExpression = null;
+            Expression visitedExp;
+            foreach (Expression<Func<T, bool>> exp in expressions)
+            {
+                // Replace paremeter in expression
+                ExpressionParameterReplacer parameterReplacer =
+                    new ExpressionParameterReplacer(exp.Parameters.First(), parameterExp);
+                visitedExp = parameterReplacer.Visit(exp.Body);
+
+                if (orChainedExpression == null)
+                    orChainedExpression = visitedExp;
+                else
+                    orChainedExpression = Expression
+                        .OrElse(orChainedExpression, visitedExp);
+            }
+
+            return Expression.Lambda<Func<T, bool>>(
+                orChainedExpression, parameterExp);
+        }
+
+        /// <summary>
         /// Get element type of IEnumerable.
         /// </summary>
         /// <exception cref="ArgumentNullException">
@@ -645,7 +692,7 @@ namespace Ma.ExtensionMethods.Reflection
         /// <exception cref="ArgumentNullException">
         /// When typeToGetUnderlying is null.
         /// </exception>
-        /// <param name="property">Property to get type of.</param>
+        /// <param name="typeToGetUnderlying">Property to get underlying type of.</param>
         /// <returns>Underlying type of property.</returns>
         public static Type GetUnderlyingType(this Type typeToGetUnderlying)
         {

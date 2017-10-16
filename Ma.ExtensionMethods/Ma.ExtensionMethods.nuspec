@@ -11,7 +11,7 @@
     <iconUrl>https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/gear-128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>General utility extension methods.</description>
-    <releaseNotes>First release of extension methods.</releaseNotes>
+    <releaseNotes>Added ConstructOrChain method for the collection of Expressions for filtering.</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>Utilities Extensions Reflection</tags>
   </metadata>
