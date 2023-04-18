@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Ma.ExtensionMethods.Models
 {
@@ -24,8 +22,7 @@ namespace Ma.ExtensionMethods.Models
 
         static LinqRuntimeTypeBuilder()
         {
-            moduleBuilder = Thread
-                .GetDomain()
+            moduleBuilder = AssemblyBuilder
                 .DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run)
                 .DefineDynamicModule(assemblyName.Name);
         }
@@ -33,7 +30,7 @@ namespace Ma.ExtensionMethods.Models
         /// <summary>
         /// Create key to identify dynamic type by using it as name
         /// </summary>
-        /// <param name="properties">Propeties of class</param>
+        /// <param name="properties">Properties of class</param>
         /// <returns>Key to identify class</returns>
         private static string GetTypeKey(Dictionary<string, Type> properties)
         {
@@ -48,7 +45,7 @@ namespace Ma.ExtensionMethods.Models
         /// Get dynamic type according to fields. If such type already exists gets that,
         /// otherwise creates new one and stores it for further use
         /// </summary>
-        /// <param name="properties">Types and names of Propeties to create dynamic type according to</param>
+        /// <param name="properties">Types and names of Properties to create dynamic type according to</param>
         /// <exception cref="ArgumentNullException">
         /// When properties argument is null
         /// </exception>
@@ -61,7 +58,7 @@ namespace Ma.ExtensionMethods.Models
             if (null == properties)
                 throw new ArgumentNullException("properties");
             if (0 == properties.Count)
-                throw new ArgumentOutOfRangeException("properties", "properties must have at least 1 proeprty definition");
+                throw new ArgumentOutOfRangeException("properties", "properties must have at least 1 property definition");
 
             try
             {
