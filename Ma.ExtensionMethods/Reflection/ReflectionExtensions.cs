@@ -128,11 +128,10 @@ namespace Ma.ExtensionMethods.Reflection
         /// <returns>True if built-in type/False otherwise.</returns>
         public static bool IsBuiltinType(this Type typeToCheck)
         {
-            if (typeToCheck == null)
-                throw new ArgumentNullException("typeToCheck");
+            ArgumentNullException.ThrowIfNull(typeToCheck);
 
-            return typeToCheck.Module
-                .ScopeName.Equals("CommonLanguageRuntimeLibrary");
+            return typeToCheck.Namespace == "System" ||
+                typeToCheck.Module.ScopeName.Equals("System.Private.CoreLib.dll");
         }
 
         /// <summary>

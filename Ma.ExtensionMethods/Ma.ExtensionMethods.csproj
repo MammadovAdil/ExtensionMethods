@@ -15,14 +15,14 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseFile>License.md</PackageLicenseFile>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DocumentationFile>bin\Debug\Ma.ExtensionMethods.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\README.md">
-      <Pack>True</Pack>
+      <Pack>False</Pack>
       <PackagePath>\</PackagePath>
     </None>
     <None Include="..\Resources\icon.png">
