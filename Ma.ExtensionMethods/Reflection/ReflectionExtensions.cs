@@ -104,7 +104,6 @@ namespace Ma.ExtensionMethods.Reflection
         /// <exception cref="ArgumentException">
         /// When member does not refer to a property.
         /// </exception>
-        /// <typeparam name="TSource">Type of container source.</typeparam>
         /// <param name="member">Member to get property from.</param>
         /// <returns>Property info.</returns>
         public static PropertyInfo GetPropertyInfo(this MemberInfo member)
@@ -231,7 +230,6 @@ namespace Ma.ExtensionMethods.Reflection
         /// When source or propertyName is null.
         /// </exception>
         /// <typeparam name="TSource">Type of source.</typeparam>
-        /// <typeparam name="TProperty">Type of property.</typeparam>
         /// <param name="source">Source to get value from.</param>
         /// <param name="propertyName">Name of property to get value according to.</param>
         /// <returns>Value of property.</returns>
@@ -256,7 +254,6 @@ namespace Ma.ExtensionMethods.Reflection
         /// When source or property is null.
         /// </exception>
         /// <typeparam name="TSource">Type of source.</typeparam>
-        /// <typeparam name="TProperty">Type of property.</typeparam>
         /// <param name="source">Source to get value from.</param>
         /// <param name="property">Property to get value according to.</param>
         /// <returns>Value of property.</returns>
@@ -707,7 +704,7 @@ namespace Ma.ExtensionMethods.Reflection
         }
 
         /// <summary>
-        /// Cast non-generic IEnumerable to IEnumerable<>.
+        /// Cast non-generic <see cref="IEnumerable"/> to <see cref="IEnumerable{T}" />.
         /// </summary>
         /// <exception cref="ArgumentNullException">
         /// When source is null.
@@ -820,9 +817,9 @@ namespace Ma.ExtensionMethods.Reflection
             MemberExpression propertyAccessExpression = null;
             PropertyInfo property = null;
 
-            /// It can be nested property access call so, try to split
-            /// according to '.' sign and make member access expression
-            /// step by step.
+            // It can be nested property access call so, try to split
+            // according to '.' sign and make member access expression
+            // step by step.
             foreach (string splitedPropertyName in propertyName.Split('.'))
             {
                 property = modelType.GetProperty(splitedPropertyName);
@@ -862,8 +859,8 @@ namespace Ma.ExtensionMethods.Reflection
 
             PropertyInfo propertyInfo = null;
 
-            /// It can be nested property call so try to split according to
-            /// '.' sign and get chained properties.
+            // It can be nested property call so try to split according to
+            // '.' sign and get chained properties.
             foreach (string splitedPropertyName in propertyName.Split('.'))
             {
                 propertyInfo = modelType.GetProperty(splitedPropertyName);

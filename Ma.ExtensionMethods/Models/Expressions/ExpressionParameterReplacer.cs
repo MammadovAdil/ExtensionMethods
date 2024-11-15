@@ -8,7 +8,7 @@ namespace Ma.ExtensionMethods.Models.Expressions
     /// </summary>
     /// <remarks>
     /// Written by Adil Mammadov according to answer at
-    /// StackOVerflow: http://stackoverflow.com/a/457328/1380428.
+    /// StackOverflow: http://stackoverflow.com/a/457328/1380428.
     /// </remarks>
     public class ExpressionParameterReplacer
         : ExpressionVisitor
