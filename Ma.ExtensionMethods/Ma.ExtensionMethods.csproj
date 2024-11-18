@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -9,16 +9,19 @@
     <Copyright>Copyright 2023</Copyright>
     <PackageProjectUrl>https://github.com/MammadovAdil/ExtensionMethods</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MammadovAdil/ExtensionMethods</RepositoryUrl>
-    <PackageReleaseNotes>Migrate to .Net 7</PackageReleaseNotes>
+    <PackageReleaseNotes>Upgrade to .Net 9</PackageReleaseNotes>
     <Title>Extension methods by Adil Mammadov</Title>
     <PackageTags>utilities;extensions;reflection</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseFile>License.md</PackageLicenseFile>
-    <Version>2.0.1</Version>
+    <Version>9.0.0</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DocumentationFile>bin\Debug\Ma.ExtensionMethods.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\README.md">
@@ -36,5 +39,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EditorConfigFiles Remove=".editorconfig" />
   </ItemGroup>
 </Project>

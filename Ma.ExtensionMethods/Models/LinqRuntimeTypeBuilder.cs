@@ -68,8 +68,9 @@ namespace Ma.ExtensionMethods.Models
                 if (builtTypes.ContainsKey(className))
                     return builtTypes[className];
 
-                TypeBuilder typeBuilder = moduleBuilder.DefineType(className,
-                    TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.Serializable);
+                TypeBuilder typeBuilder = moduleBuilder.DefineType(
+                    className,
+                    TypeAttributes.Public | TypeAttributes.Class);
 
                 foreach (var field in properties)
                     typeBuilder.GenerateProperty(field);
